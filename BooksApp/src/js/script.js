@@ -12,6 +12,8 @@ function renderBooksList() {
 }
 
 const favoriteBooks = [];
+const filters = [];
+const filterForm = document.querySelector('.filters');
 
 function initActions() {
   const bookImages = document.querySelector('.books-list');
@@ -30,7 +32,19 @@ function initActions() {
         favoriteBooks.splice(indexOfBookId, 1); 
       }
     }
+  });
 
+  filterForm.addEventListener('click', function(event) {
+    if(event.target && event.target.tagName == 'INPUT' && event.target.type  == 'checkbox' && event.target.name == 'filter') {
+      if(event.target.checked){
+        filters.push(event.target.value);
+        console.log(filters);
+      } else if (!event.target.checked) {
+        const indexOfValue = filters.indexOf(event.target.value);
+        filters.splice(indexOfValue, 1);
+        console.log(filters);
+      }
+    }
   });
 }
 
