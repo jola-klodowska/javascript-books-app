@@ -45,7 +45,26 @@ function initActions() {
         console.log(filters);
       }
     }
+    filterBooks();
   });
+}
+
+function filterBooks() {
+  for (const book of dataSource.books){
+    let shouldBeHidden = false;
+    for (const filter of filters){
+      if(!book.details[filter]){
+        shouldBeHidden = true;
+        break;
+      }
+    }
+    const bookImage = document.querySelector('.book__image[data-id="' + book.id + '"]');
+    if (shouldBeHidden == true){
+      bookImage.classList.add('hidden');
+    } else if (shouldBeHidden == false) {
+      bookImage.classList.remove('hidden');
+    }
+  }
 }
 
 renderBooksList();
