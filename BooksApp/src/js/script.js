@@ -5,6 +5,17 @@ function renderBooksList() {
   const bookContainer = document.querySelector('.books-list');
 
   for (const book of dataSource.books) {
+    book.width = book.rating * 10;
+    if(book.rating < 6){
+      book.background = 'linear-gradient(to bottom,  #fefcea 0%, #f1da36 100%)';
+    } else if (book.rating > 6 && book.rating <= 8){
+      book.background = 'linear-gradient(to bottom, #b4df5b 0%,#b4df5b 100%)';
+    } else if (book.rating > 8 && book.rating <= 9){
+      book.background = 'linear-gradient(to bottom, #299a0b 0%, #299a0b 100%)';
+    } else if (book.rating > 9){
+      book.background = 'linear-gradient(to bottom, #ff0084 0%,#ff0084 100%)'; 
+    } 
+
     const generatedHTML = tplBooks(book);
     const generatedDOM = utils.createDOMFromHTML(generatedHTML);
     bookContainer.appendChild(generatedDOM);
@@ -69,3 +80,9 @@ function filterBooks() {
 
 renderBooksList();
 initActions();
+
+
+
+
+
+
