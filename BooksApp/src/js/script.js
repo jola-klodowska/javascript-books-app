@@ -17,6 +17,7 @@ class BookList {
     thisBook.dom = {};
     thisBook.dom.filterForm = document.querySelector('.filters');
     thisBook.dom.bookContainer = document.querySelector('.books-list');
+
     thisBook.dom.tplBooksSource = document.querySelector('#template-book').innerHTML;
   }
   
@@ -100,6 +101,7 @@ class BookList {
 }
 
 const app = new BookList();
+console.log(app);
 
 
 
